@@ -6,6 +6,11 @@
 #### People Sourced Policy is an app that allows the Twin Cities communities get involved within the community of Minneapolis.  Once logged in, User's can participate by adding their own ideas to the pre selected topics for each trimester or comment on other peoples ideas.  Each tri-srmester contains a main topic with five sub-topics that pertain to the main topic.  The app includes a user rights as well as admin rights where "admin" can change the topics, manage all comments and ideas and manage all users.  The admin has complete control of the app.  App is both desktop and mobile friendly.
 
 ---
+## Devlopment
+
+The easiest way to get up and running with this application is using docker. Make sure you have docker and docker compose installed on your machine, then run `docker-compose up` to start up the app. You can then go to `localhost:8000` to view the application in the browser. 
+
+---
 
 ### License
 
