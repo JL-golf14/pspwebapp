@@ -26,16 +26,17 @@
 
       <!--//SIGN IN BUTTON//-->
       <!-- <img class="authImage" ng-hide="!lc.email" src="{{lc.photo}}">{{lc.email}} -->
-      <button ng-show="!lc.email" ng-click="" type="submit" class="btn-log">
-        Password <i class="fa fa-key"></i>
-      </button>
-      <button ng-show="!lc.email" ng-click="lc.googleLogin()" type="submit" class="btn-log">
+      <!--
+      <button ng-show="!lc.email" ng-click="lc.toggleModal()" type="submit" class="btn-log">
+       Password <i class="fa fa-key"></i>
+     </button> -->
+      <button ng-show="!lc.email" ng-click="lc.socialLogin('google')" type="submit" class="btn-log">
         Google <i class="fa fa-google"></i>
       </button>
-      <button ng-show="!lc.email" ng-click="lc.facebookLogin()" type="submit" class="btn-log">
+      <button ng-show="!lc.email" ng-click="lc.socialLogin('facebook')" type="submit" class="btn-log">
         Facebook <i class="fa fa-facebook"></i>
       </button>
-      <button ng-show="!lc.email" ng-click="" type="submit" class="btn-log">
+      <button ng-show="!lc.email" ng-click="lc.socialLogin('twitter')" type="submit" class="btn-log">
         Twitter <i class="fa fa-twitter"></i>
       </button>
       <!--//SIGN OUT BUTTON//-->

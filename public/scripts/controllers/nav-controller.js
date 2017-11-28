@@ -8,6 +8,7 @@ app.controller('NavCtrl', ['$firebaseAuth', '$http', '$location', 'TopicsFactory
   TopicsFactory.findActiveSubTopics();
   //Here is the result/active subtopics
   self.subTopic = TopicsFactory.subTopic;
+
   //sets the currently selected nav to a different class/color
   this.isActive = function (viewLocation) {
     return viewLocation === $location.path();
@@ -19,7 +20,9 @@ app.controller('NavCtrl', ['$firebaseAuth', '$http', '$location', 'TopicsFactory
     } else {
       $location.path('/subtopics/' + url);
     }
-  }
+  };
+
+
 
   // TopicsFactory.checkAdminStatus();
   // self.isAdmin = TopicsFactory.isAdmin;
