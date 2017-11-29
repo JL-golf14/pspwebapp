@@ -14,8 +14,8 @@ services:
       DATABASE_URL: postgres://psp@postgres/psp
   postgres:
     image: postgres:latest
-    #volumes:
-     # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    volumes:
+     - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_USER: psp
       POSTGRES_DB: psp
