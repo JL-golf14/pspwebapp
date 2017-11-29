@@ -1,13 +1,14 @@
 
 var pool = require('../modules/database-config');
 var admin = require("firebase-admin");
+var serviceAccount = require("../firebase-service-account.json")
 // var logger = require('./logger');
 
 
 
 
 admin.initializeApp({
- credential: admin.credential.cert("./server/firebase-service-account.json"),
+ credential: admin.credential.cert(serviceAccount),
  databaseURL: "https://psp-group.firebaseio.com/", // replace this line with your URL
 });
 /* This is where the magic happens. We pull the id_token off of the request,

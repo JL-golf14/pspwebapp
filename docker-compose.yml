@@ -9,15 +9,14 @@ services:
     ports: 
       - "8000:5000"
     depends_on:
-      - postgres
+      - db
     environment:
-      DATABASE_URL: postgres://psp@postgres/psp
-  postgres:
+      DATABASE_URL: postgres://postgres@db:5432/postgres
+  db:
     image: postgres:latest
     volumes:
      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    environment:
-      POSTGRES_USER: psp
-      POSTGRES_DB: psp
+    #environment:
+      #POSTGRES_DB: psp
     ports:
       - "8001:5432"
