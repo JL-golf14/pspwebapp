@@ -10,6 +10,13 @@
 
 The easiest way to get up and running with this application is using docker. Make sure you have docker and docker compose installed on your machine, then run `docker-compose up` to start up the app. You can then go to `localhost:8000` to view the application in the browser. 
 
+## Heroku
+
+We are using heroku at the time being to deploy this thing.
+
+### Populate the database
+
+In order to set up the database schema you will need to at least run the init.sql file inside the database for the app. To do so you can run `heroku pg:psql --app YOUR_APP_NAME_HERE < FILENAME.sql`, anytime the database schema changes or you need to reload dummy data into the staging environment this will need to be run manually. 
 ---
 
 ### License
