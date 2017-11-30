@@ -12,6 +12,7 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://postgres@db:5432/postgres
+      LOCAL: true
   db:
     image: postgres:latest
     volumes:
