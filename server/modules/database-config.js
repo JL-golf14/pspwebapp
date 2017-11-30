@@ -5,14 +5,18 @@ if(process.env.DATABASE_URL) {
  var params = url.parse(process.env.DATABASE_URL);
  var auth = params.auth.split(':');
 
- var config = {
-   user: auth[0],
-   password: auth[1],
-   host: params.hostname,
-   port: params.port,
-   database: params.pathname.split('/')[1],
-   ssl: true
- };
+//  var config = {
+//    user: auth[0],
+//    password: auth[1],
+//    host: params.hostname,
+//    port: params.port,
+//    database: params.pathname.split('/')[1],
+//    ssl: true
+//  };
+var config = {
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+};
 } else {
  var config = {
    database: 'psp_database', // the name of the database

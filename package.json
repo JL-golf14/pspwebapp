@@ -1,13 +1,14 @@
 {
-  "name": "psp-redo",
+  "name": "pspwebapp",
   "version": "1.0.0",
-  "description": "// Create an instance of Notyf var notyf = new Notyf();",
+  "description": "People sourced policy web app",
   "main": "index.js",
   "scripts": {
     "start": "node server/app.js",
-    "test": "nodemon server/app.js"
+    "test": "nodemon server/app.js",
+    "dev": "docker-compose down && docker-compose up --build --force-recreate"
   },
-  "author": "PSP-Group from Prime Digital Academy",
+  "author": "People Sourced Policy",
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.4",
@@ -36,13 +37,6 @@
     "serve-favicon": "^2.4.2",
     "svg-assets-cache": "^1.0.0",
     "underscore": "^1.8.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chris-stanton/psp-group-project.git"
-  },
-  "bugs": {
-    "url": "https://github.com/chris-stanton/psp-group-project/issues"
-  },
-  "homepage": "https://github.com/chris-stanton/psp-group-project#readme"
+  }
+
 }
