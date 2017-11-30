@@ -35,6 +35,7 @@ CREATE TABLE ideas (
   id SERIAL PRIMARY KEY,
   title VARCHAR(80),
   description VARCHAR(5000),
+  active BOOLEAN DEFAULT false,
   subtopics_id integer REFERENCES subtopics,
   user_id integer REFERENCES users
 );
@@ -42,6 +43,7 @@ CREATE TABLE ideas (
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   description VARCHAR(2500),
+  active BOOLEAN DEFAULT false,
   idea_id integer REFERENCES ideas,
   user_id integer REFERENCES users
 );
