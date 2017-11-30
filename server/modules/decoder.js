@@ -1,16 +1,25 @@
 
 var pool = require('../modules/database-config');
 var admin = require("firebase-admin");
-var serviceAccount = require("../firebase-service-account.json")
+
 // var logger = require('./logger');
 
+if (process.env.LOCAL){
+  var serviceAccount = require("../firebase-service-account.json");
+  admin.initializeApp({
+    credential: admin.credential.cert({serviceAccount}),
+    databaseURL: "https://psp-group.firebaseio.com/", // replace this line with your URL
+   });
+} else {
+  admin.initializeApp({
+    credential: admin.credential.cert({
+     "private_key": process.env.FIREBASE_PRIVATE_KEY,
+     "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+    }),
+    databaseURL: "https://psp-group.firebaseio.com/", // replace this line with your URL
+   });
+}
 
-
-
-admin.initializeApp({
- credential: admin.credential.cert(serviceAccount),
- databaseURL: "https://psp-group.firebaseio.com/", // replace this line with your URL
-});
 /* This is where the magic happens. We pull the id_token off of the request,
 verify it against our firebase service account private_key.
 Then we add the decodedToken */
