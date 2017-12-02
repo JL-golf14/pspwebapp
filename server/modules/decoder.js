@@ -7,7 +7,7 @@ var admin = require("firebase-admin");
 if (process.env.LOCAL){
   var serviceAccount = require("../firebase-service-account.json");
   admin.initializeApp({
-    credential: admin.credential.cert({serviceAccount}),
+    credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://psp-group.firebaseio.com/", // replace this line with your URL
    });
 } else {
