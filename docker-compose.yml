@@ -12,16 +12,16 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://postgres@db:5432/postgres
-      LOCAL: true
+      LOCAL: "true"
   db:
     image: postgres:latest
     volumes:
-     - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
-     - ./users.sql:/docker-entrypoint-initdb.d/2-users.sql
-     - ./main_topics.sql:/docker-entrypoint-initdb.d/3-main_topics.sql
-     - ./subtopics.sql:/docker-entrypoint-initdb.d/4-subtopics.sql
-     - ./ideas.sql:/docker-entrypoint-initdb.d/5-ideas.sql
-     - ./comments.sql:/docker-entrypoint-initdb.d/6-comments.sql
-     - ./admin.sql:/docker-entrypoint-initdb.d/6-admin.sql
+     - ./db/init.sql:/docker-entrypoint-initdb.d/1-init.sql
+     - ./db/users.sql:/docker-entrypoint-initdb.d/2-users.sql
+     - ./db/main_topics.sql:/docker-entrypoint-initdb.d/3-main_topics.sql
+     - ./db/subtopics.sql:/docker-entrypoint-initdb.d/4-subtopics.sql
+     - ./db/ideas.sql:/docker-entrypoint-initdb.d/5-ideas.sql
+     - ./db/comments.sql:/docker-entrypoint-initdb.d/6-comments.sql
+     - ./db/admin.sql:/docker-entrypoint-initdb.d/6-admin.sql
     ports:
       - "8001:5432"
