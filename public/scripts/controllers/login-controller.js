@@ -1,4 +1,4 @@
-app.controller('LoginController', ['DataFactory', 'TopicsFactory', '$firebaseAuth', '$http', '$location', '$scope', '$route', function(DataFactory, TopicsFactory, $firebaseAuth, $http, $location, $scope, $route){
+app.controller('LoginController', ['DataFactory', 'TopicsFactory', '$firebaseAuth', '$http', '$location', '$scope', '$route', '$uibModal', function(DataFactory, TopicsFactory, $firebaseAuth, $http, $location, $scope, $route, $uibModal){
 
   //google authenticate bellow
   var auth = $firebaseAuth();
@@ -6,13 +6,18 @@ app.controller('LoginController', ['DataFactory', 'TopicsFactory', '$firebaseAut
   var firebaseUser = auth.$getAuth();
 
   //controls the state of the modal
-  self.loginModalShown = false;
-
-  self.toggleModal = function() {
-    console.log("toggleModal");
-    self.loginModalShown = !self.loginModalShown;
+  $scope.openModal = function() {
+    console.log('opening login modal');
+    $scope.$modalInstance = $uibModal.open({
+    scope: $scope,
+    templateUrl: 'views/templates/password_login_modal.html',
+    });
   };
 
+  function closeModal() {
+    console.log('closing login modal');
+    $scope.$modalInstance.dismiss();
+  }
     // var notyf = new Notyf();
 
   TopicsFactory.checkAdminStatus().then(function(response){
@@ -49,25 +54,6 @@ app.controller('LoginController', ['DataFactory', 'TopicsFactory', '$firebaseAut
    }
   });
 
-  // //user google login authentication
-  // self.login = function() {
-  //   //popup google signup
-  //   auth.$signInWithPopup("google").then(function(firebaseUser) {
-  //     //checks to see if the user is in the database.
-  //     DataFactory.checkUserStatus();
-  //     if(DataFactory.email.status){
-  //       self.email = firebaseUser.email;
-  //       //user is in the database. Don't do anything.
-  //     } else if (!DataFactory.email.status){
-  //       //user is not in the database. Send them to address form.
-  //       self.email = ''; //sets button to LOGOUT
-  //       loginView();
-  //     }
-  //   }).catch(function(error) {
-  //     console.log("Authentication failed: ", error);
-  //   });//end of .catch
-  // };//end of self.login()
-
 //check for user in database
 function checkDatabaseForUser() {
   DataFactory.checkUserStatus().then(function(response){
@@ -98,15 +84,32 @@ self.socialLogin = function(provider) {
 };//end of socialLogin
 
 //Regular email password login
-  self.passwordLogin = function(email, password) {
-    auth.$signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
+  self.passwordLogin = function() {
+    closeModal();
+    auth.$signInWithEmailAndPassword($scope.email, $scope.password).then(function(firebaseUser) {
       console.info("Signed in as:", firebaseUser.user.uid);
-      //checks if user is within database
+      //checks if user is within database 
       checkDatabaseForUser();
+      
   }).catch(function(error){
     console.error("Authentication failed: ", error);
+    if (error.code == "auth/user-not-found") {
+      registerWithEmail();
+    }
   });
 };
+
+//register user with email/password
+  registerWithEmail = function() {
+    closeModal();
+    auth.$createUserWithEmailAndPassword($scope.email, $scope.password).then(function(firebaseUser) {
+      //checks if user is within database 
+      checkDatabaseForUser();
+      
+    }).catch(function(error) {
+      console.error("User registration failed: ", error);
+    })
+  };
 
   //When user hits logout
   self.logout = function() {
@@ -114,7 +117,8 @@ self.socialLogin = function(provider) {
     auth.$signOut().then(function() {
       self.email = '';
       self.isAdmin = '';
-      $route.reload();
+      $location.path('/home');
+      //$route.reload();
     });//end of auth.$signOut()
   };//end of self.deAuthUser()
 

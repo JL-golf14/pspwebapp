@@ -31,10 +31,9 @@
 
       <!--//SIGN IN BUTTON//-->
       <!-- <img class="authImage" ng-hide="!lc.email" src="{{lc.photo}}">{{lc.email}} -->
-      <!--
-      <button ng-show="!lc.email" ng-click="lc.toggleModal()" type="submit" class="btn-log">
-       Password <i class="fa fa-key"></i>
-     </button> -->
+      <button ng-show="!lc.email" ng-click="openModal()" type="submit" class="btn-log">
+        Password <i class="fa fa-key"></i>
+      </button>
       <button ng-show="!lc.email" ng-click="lc.socialLogin('google')" type="submit" class="btn-log">
         Google <i class="fa fa-google"></i>
       </button>
