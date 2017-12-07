@@ -6,7 +6,7 @@ CREATE TABLE users (
   email VARCHAR(100) NOT NULL,
   address VARCHAR(2500) NOT NULL,
   ward INTEGER,
-  admin BOOLEAN DEFAULT false,
+  admin BOOLEAN DEFAULT true,
   active BOOLEAN DEFAULT false,
   city VARCHAR(200),
   state VARCHAR(200),
