@@ -1,4 +1,11 @@
 /* ============================================================================= *
+ +*           HELPERS                                                              *
+ +* ============================================================================== */
+.h-text-center {
+   text-align: center;
+}
+
+/* ============================================================================= *
 *           MAIN TOPIC                                                           *
 * ============================================================================== */
 body {
@@ -82,6 +89,10 @@ body {
 
 h1, h2, h3, h4, h5, h6, p {
   color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  hyphens: auto;
 }
 
 h1 {
@@ -408,7 +419,7 @@ h1 {
 }
 
 .ctaTitle i {
-  margin-right: 20px;
+  margin-right: 12px;
 }
 
 .frmTitle {
@@ -735,6 +746,36 @@ th {
 /* idea main element */
 .ideaMain {
   text-align: center;
+}
+
+/* local reps */
+.repsContainer {
+  background-color: #fff;
+  padding: 5px 30px 0;
+}
+
+.rep {
+  background-color: #fff;
+  padding: 30px;
+}
+
+.rep--image{
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .repsContainer {
+    padding: 0 5px 0;
+  }
+
+  .rep {
+    padding: 5px 0 10px;
+  }
 }
 
 /* logo */
