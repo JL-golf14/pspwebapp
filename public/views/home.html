@@ -7,9 +7,11 @@
 
 <!--
 /* ============================================================================= *
-*        BELOW SUBTOPIC NAVIGATION                                               *
+*        REPRESENATIVES                                                          *
 * ============================================================================== */
 -->
+
+<div ng-include="'/views/templates/represenative_views.html'"></div>
 
 <!--
 /* ============================================================================= *
@@ -30,7 +32,7 @@
     </div>
     <!--//TOP-SIDE CALL TO ACTION ON MEDIUM AND LARGE SCREEN//-->
     <div class="visible-md-block visible-lg-block visible-xl-block  col-md-5 callToAction">
-      <div class="ctaTitle">
+      <div class="ctaTitle h-text-center">
         <h2><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Share your thoughts </h2>
       </div>
       <div>
@@ -54,19 +56,19 @@
 -->
 <div id="tallyDiv" class="container-fluid">
   <div class="row" style="text-align: center;">
-    <div class="col-sm-3" style="border-right: 2px solid #57c4ea; border-top: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
+    <div class="col-sm-3" style="border-right: 2px solid #57c4ea; border-top: 2px solid #57c4ea; border-bottom: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
       <p> <b>Users</b> </p>
       <span style="font-size: 24px; color: #57c4ea;"> {{hc.userTally.count.count}} </span>
     </div>
-    <div class="col-sm-3" style="border-right: 2px solid #57c4ea;  border-top: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
+    <div class="col-sm-3" style="border-right: 2px solid #57c4ea;  border-top: 2px solid #57c4ea; border-bottom: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
       <p><b> Ideas </b></p>
       <span style="font-size: 24px; color: #57c4ea;"> {{hc.ideasTally.count.count}} </span>
     </div>
-    <div class="col-sm-3" style="border-right: 2px solid #57c4ea; border-top: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
+    <div class="col-sm-3" style="border-right: 2px solid #57c4ea; border-top: 2px solid #57c4ea; border-bottom: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
       <p><b>Comments</b></p>
       <span style="font-size: 24px; color: #57c4ea;"> {{hc.commentsTally.count.sumcount}} </span>
     </div>
-    <div class="col-sm-3" style="border-top: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
+    <div class="col-sm-3" style="border-top: 2px solid #57c4ea; border-bottom: 2px solid #57c4ea; padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
       <p><b>Likes</b></p>
       <span style="font-size: 24px; color: #57c4ea;"> {{hc.likesTally.count.sumcount}} </span>
     </div>
