@@ -12,7 +12,10 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://postgres@db:5432/postgres
-      LOCAL: "true"
+      FIREBASE_PRIVATE_KEY:
+      FIREBASE_CLIENT_EMAIL:
+      FIREBASE_PRIVATE_KEY_ID:
+      FIREBASE_PROJECT_ID:
   db:
     image: postgres:latest
     volumes:
