@@ -4,6 +4,7 @@ var admin = require("firebase-admin");
 
 // var logger = require('./logger');
 
+/*
 if (process.env.LOCAL){
   var serviceAccount = require("../firebase-service-account.json");
   admin.initializeApp({
@@ -15,10 +16,25 @@ if (process.env.LOCAL){
     credential: admin.credential.cert({
      "private_key": process.env.FIREBASE_PRIVATE_KEY,
      "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+     "private_key_id": process.env.FIREBASE_PRIVATE_KEY_ID,
+     "project_id": process.env.FIREBASE_PROJECT_ID,
     }),
     databaseURL: "https://psp-group.firebaseio.com/", // replace this line with your URL
    });
 }
+*/
+
+admin.initializeApp({
+  credential: admin.credential.cert({
+   "private_key": process.env.FIREBASE_PRIVATE_KEY,
+   "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+   "private_key_id": process.env.FIREBASE_PRIVATE_KEY_ID,
+   "project_id": process.env.FIREBASE_PROJECT_ID,
+   "client_id": process.env.FIREBASE_CLIENT_ID
+  }),
+  databaseURL: "https://psp-group.firebaseio.com/", // replace this line with your URL
+ });
+
 
 /* This is where the magic happens. We pull the id_token off of the request,
 verify it against our firebase service account private_key.
